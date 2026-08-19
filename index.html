@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFix Agenda | Soporte L2 y Mantenimiento IT</title>
+    
+
+    <meta name="description" content="Agenda tus tickets de soporte técnico de nivel 2, mantenimiento de hardware y gestión de redes.">
+    <meta property="og:title" content="TechFix Agenda - Soporte IT">
+    <meta property="og:description" content="Portal de gestión de incidentes y mantenimiento de infraestructura IT.">
+    <meta property="og:image" content="https://tusitio.com/img/techfix-og.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <header role="banner">
+        <nav aria-label="Navegación principal">
+            <div class="logo" aria-hidden="true">🛠️ TechFix Agenda</div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#agendar">Agendar Ticket</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section id="inicio" class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">Soporte IT y Mantenimiento Especializado</h1>
+            <p>Resolución de incidentes Nivel 2, administración de endpoints y diagnóstico de infraestructura.</p>
+        </section>
+
+        <section id="servicios" aria-labelledby="services-title">
+            <h2 id="services-title" class="section-title">Catálogo de Servicios</h2>
+            <div class="grid-features">
+                <article class="feature-card">
+                    <h3>Gestión de Endpoints</h3>
+                    <p>Configuración y troubleshooting de políticas en dispositivos macOS, Linux y Windows vía MDM.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Infraestructura y Redes</h3>
+                    <p>Resolución de conflictos de IP, segmentación VLAN, y configuración de accesos VPN.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Mantenimiento de Hardware</h3>
+                    <p>Diagnóstico de fallos físicos, upgrades de memoria RAM y optimización de equipos.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="agendar" class="booking-section" aria-labelledby="booking-title">
+            <h2 id="booking-title" class="section-title">Apertura de Ticket</h2>
+            
+            <form id="ticket-form" novalidate aria-describedby="form-instructions">
+                <p id="form-instructions" class="sr-only">Complete los campos requeridos para abrir un nuevo ticket de soporte.</p>
+                
+                <div class="form-group">
+                    <label for="name">Nombre del Solicitante <span aria-hidden="true">*</span></label>
+                    <input type="text" id="name" name="name" required aria-required="true" aria-invalid="false" aria-describedby="name-error">
+                    <span id="name-error" class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Corporativo <span aria-hidden="true">*</span></label>
+                    <input type="email" id="email" name="email" required aria-required="true" aria-invalid="false" aria-describedby="email-error">
+                    <span id="email-error" class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Categoría del Incidente <span aria-hidden="true">*</span></label>
+                    <select id="category" name="category" required aria-required="true" aria-invalid="false" aria-describedby="category-error">
+                        <option value="">Seleccione una categoría...</option>
+                        <option value="hardware">Mantenimiento de Hardware</option>
+                        <option value="os">Sistemas Operativos (Win/Mac/Linux)</option>
+                        <option value="network">Redes y VPN</option>
+                        <option value="mdm">Gestión de Dispositivos (Intune/Mosyle)</option>
+                    </select>
+                    <span id="category-error" class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descripción del problema</label>
+                    <textarea id="description" name="description" rows="4"></textarea>
+                </div>
+
+                <button type="submit" aria-label="Enviar ticket de soporte">Generar Ticket</button>
+            </form>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 TechFix Agenda. Proyecto Web Foundations.</p>
+    </footer>
+
+    <!-- Script compilado (Tarea 2) -->
+    <script src="main.js"></script>
+</body>
+</html>
