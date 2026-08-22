@@ -11,6 +11,12 @@
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --radius: 8px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+    --gradient-brand: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+    --shadow-soft: 0 8px 30px rgba(15, 23, 42, 0.12);
+    --shadow-card-hover: 0 20px 40px rgba(15, 23, 42, 0.18);
+    --text-inverted: #e2e8f0;
     --font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
@@ -56,9 +62,11 @@ body {
 
 /* Layout Header (Flexbox) */
 header {
-    background-color: var(--primary-color);
-    color: var(--bg-white);
+    background-color: transparent;
     padding: var(--spacing-md);
+    position: sticky;
+    top: 0;
+    z-index: 50;
 }
 
 nav {
@@ -66,11 +74,19 @@ nav {
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-md);
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
 }
 
 .logo {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 800;
+    letter-spacing: -0.02em;
 }
 
 nav ul {
@@ -78,7 +94,7 @@ nav ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
 }
 
 nav a {
@@ -86,7 +102,13 @@ nav a {
     text-decoration: none;
     font-weight: 500;
     padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius);
+    border-radius: var(--radius-pill);
+    transition: background-color 0.2s ease;
+}
+
+nav a[aria-current="page"] {
+    background: var(--gradient-brand);
+    font-weight: 700;
 }
 
 nav a:focus, nav a:hover {
@@ -106,15 +128,51 @@ main {
     text-align: center;
     margin-bottom: var(--spacing-lg);
     color: var(--primary-color);
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
 }
 
 .hero {
+    position: relative;
+    overflow: hidden;
     text-align: center;
     padding: 4rem var(--spacing-md);
-    background-color: var(--bg-white);
-    border-radius: var(--radius);
+    background-color: var(--primary-color);
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.45), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(236, 72, 153, 0.4), transparent 45%);
+    color: var(--bg-white);
+    border-radius: var(--radius-lg);
     margin-bottom: var(--spacing-lg);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-soft);
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-md);
+}
+
+.hero p {
+    color: var(--text-inverted);
+    font-size: 1.1rem;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+.badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--bg-white);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--spacing-md);
 }
 
 /* Layout Grid para Features */
@@ -128,9 +186,78 @@ main {
 .feature-card {
     background: var(--bg-white);
     padding: var(--spacing-lg);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    border-top: 4px solid var(--secondary-color);
+    border-top: 4px solid transparent;
+    border-image: var(--gradient-brand) 1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Grid para 4 elementos (Industrias) */
+.grid-industries {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Perfiles de tecnicos certificados (Pagina Certificaciones) */
+.grid-team {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.team-card {
+    text-align: center;
+}
+
+.avatar {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    color: var(--bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.role-tag {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.cert-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-top: var(--spacing-md);
+}
+
+.cert-badge {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    border: 1px solid #e2e8f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.75rem;
+    font-weight: 600;
 }
 
 /* Layout Formulario */
@@ -185,19 +312,21 @@ input[aria-invalid="true"], select[aria-invalid="true"] {
 }
 
 button[type="submit"] {
-    background-color: var(--secondary-color);
+    background: var(--gradient-brand);
     color: var(--bg-white);
     border: none;
     padding: 1rem;
     font-size: 1rem;
     font-weight: bold;
-    border-radius: var(--radius);
+    border-radius: var(--radius-pill);
     cursor: pointer;
-    transition: background-color 0.3s;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
 }
 
 footer {
@@ -217,5 +346,13 @@ footer {
     
     .grid-features {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-industries {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-team {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
