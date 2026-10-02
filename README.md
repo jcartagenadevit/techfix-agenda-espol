@@ -17,4 +17,4 @@ Proyecto integrador desarrollado para el módulo de Web Foundations & Agentic Co
 
 1. Clonar el repositorio:
    ```bash
-   git clone <url-de-tu-repo>
+   git clone <https://github.com/jcartagenadevit/techfix-agenda-espol.git>
