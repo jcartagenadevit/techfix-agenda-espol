@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFix Agenda | Playground de Componentes</title>
+
+    <meta name="description" content="Catálogo de componentes de interfaz de TechFix Agenda: botones y alertas con sus estados.">
+    <meta name="robots" content="noindex">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <header role="banner">
+        <nav aria-label="Navegación principal">
+            <div class="logo" aria-hidden="true">🛠️ TechFix Agenda</div>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="industrias.html">Industrias</a></li>
+                <li><a href="certificaciones.html">Certificaciones</a></li>
+                <li><a href="playground.html" aria-current="page">Playground</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section class="hero" aria-labelledby="playground-hero-title">
+            <span class="badge" aria-hidden="true">Sistema de Diseño</span>
+            <h1 id="playground-hero-title">Playground de Componentes</h1>
+            <p>Botones y alertas reutilizables para el sitio público y el backoffice de gestión de tickets.</p>
+        </section>
+
+        <!-- Botones -->
+        <section class="playground-section" aria-labelledby="buttons-title">
+            <h2 id="buttons-title" class="section-title">Botones</h2>
+            <p class="playground-note">Pasa el cursor (hover), haz clic sostenido (active) o navega con Tab (focus) para ver cada estado.</p>
+
+            <h3>Primario</h3>
+            <div class="playground-row">
+                <button type="button" class="btn btn--primary">Generar Ticket</button>
+                <button type="button" class="btn btn--primary" disabled>Generar Ticket</button>
+            </div>
+
+            <h3>Secundario</h3>
+            <div class="playground-row">
+                <button type="button" class="btn btn--secondary">Ver Historial</button>
+                <button type="button" class="btn btn--secondary" disabled>Ver Historial</button>
+            </div>
+
+            <h3>Peligro</h3>
+            <div class="playground-row">
+                <button type="button" class="btn btn--danger">Cerrar Ticket</button>
+                <button type="button" class="btn btn--danger" disabled>Cerrar Ticket</button>
+            </div>
+        </section>
+
+        <!-- Alertas -->
+        <section class="playground-section" aria-labelledby="alerts-title">
+            <h2 id="alerts-title" class="section-title">Alertas</h2>
+            <p class="playground-note">Cada alerta usa color, icono y texto para comunicar su estado. El botón × la descarta.</p>
+
+            <div class="playground-stack">
+                <div class="alert alert--info" role="status">
+                    <span class="alert__icon" aria-hidden="true">i</span>
+                    <div class="alert__content">
+                        <strong class="alert__title">Información</strong>
+                        <p>El ticket #1042 fue asignado a un técnico de Nivel 2.</p>
+                    </div>
+                    <button type="button" class="alert__close" aria-label="Cerrar alerta">&times;</button>
+                </div>
+
+                <div class="alert alert--success" role="status">
+                    <span class="alert__icon" aria-hidden="true">✓</span>
+                    <div class="alert__content">
+                        <strong class="alert__title">Éxito</strong>
+                        <p>El ticket se generó correctamente. Recibirás un correo de confirmación.</p>
+                    </div>
+                    <button type="button" class="alert__close" aria-label="Cerrar alerta">&times;</button>
+                </div>
+
+                <div class="alert alert--warning" role="alert">
+                    <span class="alert__icon" aria-hidden="true">!</span>
+                    <div class="alert__content">
+                        <strong class="alert__title">Advertencia</strong>
+                        <p>El SLA de este ticket vence en menos de 2 horas.</p>
+                    </div>
+                    <button type="button" class="alert__close" aria-label="Cerrar alerta">&times;</button>
+                </div>
+
+                <div class="alert alert--error" role="alert">
+                    <span class="alert__icon" aria-hidden="true">×</span>
+                    <div class="alert__content">
+                        <strong class="alert__title">Error</strong>
+                        <p>No se pudo conectar con el servidor. Intenta nuevamente en unos minutos.</p>
+                    </div>
+                    <button type="button" class="alert__close" aria-label="Cerrar alerta">&times;</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 TechFix Agenda. Proyecto Web Foundations.</p>
+    </footer>
+
+    <script>
+        // Descartar alertas
+        document.querySelectorAll('.alert__close').forEach((btn) => {
+            btn.addEventListener('click', () => btn.closest('.alert').remove());
+        });
+    </script>
+</body>
+</html>

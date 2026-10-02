@@ -52,4 +52,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    // Filtros del panel derecho (Dashboard)
+    const filtersForm = document.getElementById('filters-form');
+    const ticketRows = document.querySelectorAll('#ticket-rows tr[data-status]');
+    const emptyRow = document.getElementById('ticket-empty');
+    const ticketCount = document.getElementById('ticket-count');
+    if (filtersForm) {
+        const applyFilters = () => {
+            const data = new FormData(filtersForm);
+            const search = String(data.get('search') ?? '').trim().toLowerCase();
+            const statuses = data.getAll('status').map(String);
+            const priority = String(data.get('priority') ?? '');
+            const category = String(data.get('category') ?? '');
+            let visible = 0;
+            ticketRows.forEach((row) => {
+                const matches = statuses.includes(row.dataset.status ?? '') &&
+                    (priority === '' || row.dataset.priority === priority) &&
+                    (category === '' || row.dataset.category === category) &&
+                    (search === '' || (row.textContent ?? '').toLowerCase().includes(search));
+                row.hidden = !matches;
+                if (matches)
+                    visible++;
+            });
+            if (emptyRow)
+                emptyRow.hidden = visible > 0;
+            if (ticketCount)
+                ticketCount.textContent = `Mostrando ${visible} de ${ticketRows.length} tickets`;
+        };
+        filtersForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            applyFilters();
+        });
+        // "reset" se dispara antes de restaurar los valores; se espera un ciclo
+        filtersForm.addEventListener('reset', () => setTimeout(applyFilters));
+    }
 });
