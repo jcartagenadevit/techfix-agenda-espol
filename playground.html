@@ -129,6 +129,20 @@
         document.querySelectorAll('.alert__close').forEach((btn) => {
             btn.addEventListener('click', () => btn.closest('.alert').remove());
         });
+
+        // Mixpanel: evento principal (Generar Ticket)
+        document.querySelectorAll('.btn--primary:not(:disabled)').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                mixpanel.track('ticket_creado', { 'origen': 'playground_web', 'perfil': 'tecnico_L2' });
+            });
+        });
+
+        // Mixpanel: evento secundario (Ver Historial)
+        document.querySelectorAll('.btn--secondary:not(:disabled)').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                mixpanel.track('interaccion_secundaria', { 'accion': 'navegacion_o_filtro' });
+            });
+        });
     </script>
 </body>
 </html>
