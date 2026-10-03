@@ -638,3 +638,63 @@ footer {
         transform: none;
     }
 }
+
+/* ==========================================================
+   Playground: fondo de página + contenedor tipo tarjeta
+   (con alcance limitado a playground.html para no afectar otras páginas)
+   ========================================================== */
+:root {
+    --page-bg: #f4f6f8;
+    --card-border: #e5e9ef;
+    --shadow-panel: 0 1px 3px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+.page-playground {
+    background-color: var(--page-bg);
+    background-image: linear-gradient(180deg, #eaeef3 0%, var(--page-bg) 320px);
+    min-height: 100vh;
+}
+
+/* Tarjeta central que envuelve todo el contenido */
+.playground-card {
+    max-width: 1000px;
+    margin: var(--spacing-md) auto 0;
+    padding: var(--spacing-md);
+    background-color: var(--bg-white);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-panel);
+}
+
+/* Dentro de la tarjeta las secciones dejan de ser tarjetas propias:
+   se separan con una línea sutil, estilo panel de configuración */
+.playground-card .playground-section {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: var(--spacing-lg) 0;
+    margin-bottom: 0;
+    border-top: 1px solid var(--card-border);
+}
+
+.playground-card .playground-section:last-child {
+    padding-bottom: var(--spacing-sm);
+}
+
+.playground-card .section-title {
+    text-align: left;
+    font-size: 1.35rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.playground-card .hero {
+    padding: 3rem var(--spacing-md);
+    box-shadow: none;
+}
+
+@media (min-width: 768px) {
+    .playground-card {
+        margin-top: var(--spacing-lg);
+        padding: var(--spacing-lg) 2.5rem;
+    }
+}
